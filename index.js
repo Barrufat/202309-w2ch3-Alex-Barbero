@@ -81,9 +81,7 @@ const getAllSongsFromAGenre = (songList, genre) => {
 };
 
 const getAllHitSongsFromAList = (songList) => {
-  const hitSongs = songList.filters((song) => {
-    song.wasHit === true;
-  });
+  const hitSongs = songList.filter((song) => song.wasHit);
   return hitSongs.length;
 };
 
@@ -105,5 +103,3 @@ const getAverageDuration = (songList) => {
 
   return totalDuration / songList.length;
 };
-
-console.log(getAverageDuration(songs));
