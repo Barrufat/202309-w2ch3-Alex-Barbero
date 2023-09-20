@@ -60,7 +60,12 @@ const addSongToTheList = (song) => {
   return songs;
 };
 
-const deleteSongFromTheListByName = (selectedSong) => {
-  const filteredSongs = songs.filter((song) => song.title !== selectedSong);
+const deleteSongFromTheListByName = (songTitle) => {
+  const filteredSongs = songs.filter((song) => song.title !== songTitle);
   return filteredSongs;
+};
+
+const getFullSongFromTheListByName = (songTitle) => {
+  const fullSong = songs.filter((song) => song.title === songTitle);
+  return fullSong;
 };
