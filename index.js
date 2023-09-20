@@ -51,7 +51,7 @@ const songs = [
     genre: "Pop Latino",
     duration: 230,
     year: 1995,
-    wasHit: true,
+    wasHit: false,
   },
 ];
 
@@ -61,40 +61,29 @@ const addSongToTheList = (song) => {
 };
 
 const deleteSongFromTheListByTitle = (songTitle) => {
-  const songPosition = songs.map((song) => song.title).indexOf(songTitle);
-
-  songs.splice(songPosition, 1, "");
+  songs.splice(songs.map((song) => song.title).indexOf(songTitle), 1, "");
 
   return songs;
 };
 
 const getFullSongFromTheListByName = (songTitle) => {
-  const fullSong = songs.filter((song) => song.title === songTitle);
-  return fullSong;
+  return songs.filter((song) => song.title === songTitle);
 };
 
 const getAllSongsFromAGenre = (songList, genre) => {
-  const genreSongs = songList.filter((song) => {
-    song.genre === genre;
-  });
-  return genreSongs;
+  return songList.filter((song) => song.genre === genre);
 };
 
 const getAllHitSongsFromAList = (songList) => {
-  const hitSongs = songList.filter((song) => song.wasHit);
-  return hitSongs.length;
+  return songList.filter((song) => song.wasHit).length;
 };
 
 const getSortedListByYear = (songList) => {
-  const sortedListByYear = songList.sort(
-    (song1, song2) => song1.year - song2.year
-  );
-  return sortedListByYear;
+  return songList.sort((song1, song2) => song1.year - song2.year);
 };
 
 const getSongTitles = (songList) => {
-  const songTitles = songList.map((song) => song.title);
-  return songTitles;
+  return songList.map((song) => song.title);
 };
 
 const getAverageDuration = (songList) => {
