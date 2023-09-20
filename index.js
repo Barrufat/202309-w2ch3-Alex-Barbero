@@ -61,11 +61,28 @@ const addSongToTheList = (song) => {
 };
 
 const deleteSongFromTheListByName = (songTitle) => {
-  const filteredSongs = songs.filter((song) => song.title !== songTitle);
-  return filteredSongs;
+  const songPosition = songs.map((song) => song.title).indexOf(songTitle);
+
+  songs.splice(songPosition, 1, "");
+
+  return songs;
 };
 
 const getFullSongFromTheListByName = (songTitle) => {
   const fullSong = songs.filter((song) => song.title === songTitle);
   return fullSong;
+};
+
+const getAllSongsFromAGenre = (songList, genre) => {
+  const genreSongs = songList.filter((song) => {
+    song.genre === genre;
+  });
+  return genreSongs;
+};
+
+const getAllHitSongsFromAList = (songList) => {
+  const hitSongs = songList.filters((song) => {
+    song.wasHit === true;
+  });
+  return hitSongs.length;
 };
