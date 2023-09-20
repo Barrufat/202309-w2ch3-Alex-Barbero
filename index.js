@@ -56,5 +56,11 @@ const songs = [
 ];
 
 const addSongToTheList = (song) => {
-  song.push(song);
+  songs.push(song);
+  return songs;
+};
+
+const deleteSongFromTheListByName = (selectedSong) => {
+  const filteredSongs = songs.filter((song) => song.title !== selectedSong);
+  return filteredSongs;
 };
