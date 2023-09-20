@@ -60,7 +60,7 @@ const addSongToTheList = (song) => {
   return songs;
 };
 
-const deleteSongFromTheListByName = (songTitle) => {
+const deleteSongFromTheListByTitle = (songTitle) => {
   const songPosition = songs.map((song) => song.title).indexOf(songTitle);
 
   songs.splice(songPosition, 1, "");
@@ -86,3 +86,24 @@ const getAllHitSongsFromAList = (songList) => {
   });
   return hitSongs.length;
 };
+
+const getSortedListByYear = (songList) => {
+  const sortedListByYear = songList.sort(
+    (song1, song2) => song1.year - song2.year
+  );
+  return sortedListByYear;
+};
+
+const getSongTitles = (songList) => {
+  const songTitles = songList.map((song) => song.title);
+  return songTitles;
+};
+
+const getAverageDuration = (songList) => {
+  let totalDuration = 0;
+  songList.forEach((song) => (totalDuration = totalDuration + song.duration));
+
+  return totalDuration / songList.length;
+};
+
+console.log(getAverageDuration(songs));
