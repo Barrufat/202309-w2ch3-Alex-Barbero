@@ -55,40 +55,27 @@ const songs = [
   },
 ];
 
-const addSongToTheList = (song) => {
-  songs.push(song);
-  return songs;
-};
+const addSongToTheList = (song) => songs.push(song);
 
-const deleteSongFromTheListByTitle = (songTitle) => {
-  songs.splice(songs.map((song) => song.title).indexOf(songTitle), 1, "");
+const deleteSongFromTheListByTitle = (songTitle) =>
+  songs.splice(songs.map((song) => song.title).indexOf(songTitle), 1);
 
-  return songs;
-};
+const getFullSongFromTheListByName = (songTitle) =>
+  songs.find((song) => song.title === songTitle);
 
-const getFullSongFromTheListByName = (songTitle) => {
-  return songs.filter((song) => song.title === songTitle);
-};
+const getAllSongsFromAGenre = (songList, genre) =>
+  songList.filter((song) => song.genre === genre);
 
-const getAllSongsFromAGenre = (songList, genre) => {
-  return songList.filter((song) => song.genre === genre);
-};
+const getAllHitSongsFromAList = (songList) =>
+  songList.filter((song) => song.wasHit).length;
 
-const getAllHitSongsFromAList = (songList) => {
-  return songList.filter((song) => song.wasHit).length;
-};
+const getSortedListByYear = (songList) =>
+  songList.toSorted((song1, song2) => song1.year - song2.year);
 
-const getSortedListByYear = (songList) => {
-  return songList.sort((song1, song2) => song1.year - song2.year);
-};
-
-const getSongTitles = (songList) => {
-  return songList.map((song) => song.title);
-};
+const getSongTitles = (songList) => songList.map((song) => song.title);
 
 const getAverageDuration = (songList) => {
   let totalDuration = 0;
   songList.forEach((song) => (totalDuration = totalDuration + song.duration));
-
   return totalDuration / songList.length;
 };
